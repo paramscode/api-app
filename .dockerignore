@@ -1,0 +1,47 @@
+# Virtual environment
+venv/
+.venv/
+
+# Testing and coverage
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Git
+.git/
+.gitignore
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Logs
+*.log
+app.log*
+
+# Documentation
+README.md
+CLAUDE.md
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Other
+.env
+.env.local
