@@ -55,6 +55,56 @@ curl -X POST "http://localhost:8000/generate-csv" \
 curl http://localhost:8000/health
 ```
 
+## Docker Deployment
+
+### Prerequisites
+- Docker installed on your system
+
+### Build and Run with Docker
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t api-app .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 8000:8000 api-app
+   ```
+
+3. **Run with file logging enabled:**
+   ```bash
+   docker run -p 8000:8000 -e ENABLE_FILE_LOGGING=true api-app
+   ```
+
+4. **Run in detached mode:**
+   ```bash
+   docker run -d -p 8000:8000 --name api-app-container api-app
+   ```
+
+5. **Access the API:**
+   - API will be available at: http://localhost:8000
+   - Interactive API docs: http://localhost:8000/docs
+
+### Docker Management Commands
+
+```bash
+# Stop the container
+docker stop api-app-container
+
+# Start the container
+docker start api-app-container
+
+# View logs
+docker logs api-app-container
+
+# Remove container
+docker rm api-app-container
+
+# Remove image
+docker rmi api-app
+```
+
 ## Running Tests
 
 ```bash
@@ -68,18 +118,19 @@ pytest tests/test_main.py -v --cov=src --cov-report=html --cov-report=term
 ## Project Structure
 
 ```
-data-backend/
+api-app/
 ├── src/                 # Source code directory
-│   ├── __init__.py
-│   ├── main.py          # FastAPI application
-│   ├── api/             # API endpoints (future)
-│   ├── models/          # Data models (future)
-│   └── services/        # Business logic (future)
+│   ├── main.py          # FastAPI application entry point
+│   ├── api/             # API layer
+│   │   └── endpoints/   # API endpoint handlers
+│   │       ├── csv.py   # CSV generation endpoint
+│   │       └── health.py # Health check endpoint
+│   ├── config/          # Configuration modules
+│   │   └── logging.py   # Logging configuration
+│   ├── middleware/      # FastAPI middleware
+│   │   └── logging.py   # Request logging middleware
+│   ├── models/          # Pydantic data models
+│   └── services/        # Business logic services
 ├── tests/               # Test directory
-│   ├── __init__.py
-│   └── test_main.py     # Unit tests
 ├── requirements.txt     # Python dependencies
-├── README.md           # This file
-├── CLAUDE.md           # Claude Code guidance
-└── venv/               # Virtual environment
 ```
