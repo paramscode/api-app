@@ -1,7 +1,4 @@
 # CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 This is a Python FastAPI data backend application that provides REST endpoints for generating test data files in CSV format. The main functionality includes a CSV generation endpoint that creates files based on user-specified parameters.
@@ -19,14 +16,10 @@ pip install -r requirements.txt
 
 # Run the application
 python -m src.main
-# OR
-uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
 
 # Run tests
 pytest tests/test_main.py -v
 
-# Run tests with coverage
-pytest tests/test_main.py -v --cov=src --cov-report=html --cov-report=term
 ```
 
 ## Application Architecture
@@ -207,7 +200,7 @@ ENABLE_FILE_LOGGING=true pytest tests/test_main.py -v
 
 - The application generates CSV files in memory using Python's csv module
 - CSV responses include proper headers for file download
-- The .gitignore includes patterns for Abstra and various Python development tools
+- The .gitignore includes patterns for various Python development tools
 - **Logging configuration**:
   - **Default**: Console logging only for cleaner development
   - **File logging**: Enable with `ENABLE_FILE_LOGGING=true` for production

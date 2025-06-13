@@ -68,18 +68,19 @@ pytest tests/test_main.py -v --cov=src --cov-report=html --cov-report=term
 ## Project Structure
 
 ```
-data-backend/
+api-app/
 ├── src/                 # Source code directory
-│   ├── __init__.py
-│   ├── main.py          # FastAPI application
-│   ├── api/             # API endpoints (future)
-│   ├── models/          # Data models (future)
-│   └── services/        # Business logic (future)
+│   ├── main.py          # FastAPI application entry point
+│   ├── api/             # API layer
+│   │   └── endpoints/   # API endpoint handlers
+│   │       ├── csv.py   # CSV generation endpoint
+│   │       └── health.py # Health check endpoint
+│   ├── config/          # Configuration modules
+│   │   └── logging.py   # Logging configuration
+│   ├── middleware/      # FastAPI middleware
+│   │   └── logging.py   # Request logging middleware
+│   ├── models/          # Pydantic data models
+│   └── services/        # Business logic services
 ├── tests/               # Test directory
-│   ├── __init__.py
-│   └── test_main.py     # Unit tests
 ├── requirements.txt     # Python dependencies
-├── README.md           # This file
-├── CLAUDE.md           # Claude Code guidance
-└── venv/               # Virtual environment
 ```
